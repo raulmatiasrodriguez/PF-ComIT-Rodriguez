@@ -1,0 +1,65 @@
+CREATE DATABASE BayFoodNow;
+
+CREATE TABLE clientes (
+	idcliente INT NOT NULL,
+	nombre VARCHAR (255),
+	apellido VARCHAR (255),
+	direccion VARCHAR (255),
+	tel_cel INT,
+	PRIMARY KEY (idcliente)
+	);
+
+CREATE TABLE negocios (
+	idnegocio INT NOT NULL,
+	nombre VARCHAR (255),
+	cuit INT,
+	direccion VARCHAR (255),
+	barrio VARCHAR (255),
+	PRIMARY KEY (idnegocio)
+	);
+
+
+CREATE TABLE pedidos(
+	idpedido INT NOT NULL,
+	fecha DATETIME,
+	tiene_envio BIT,
+	valor_envio FLOAT,
+	subtotal FLOAT,
+	total FLOAT,
+	cli_idcliente INT NOT NULL,
+	PRIMARY KEY (idpedido),
+	FOREIGN KEY (cli_idcliente) REFERENCES clientes (idcliente)
+	);
+
+CREATE TABLE productos(
+	idproducto INT NOT NULL,
+	descripcion VARCHAR (255),
+	precio FLOAT,
+	negocios_idnegocio INT NOT NULL,
+	PRIMARY KEY (idproducto),
+	FOREIGN KEY (negocios_idnegocio) REFERENCES negocios (idnegocio)
+);
+
+
+CREATE TABLE ped_prod(
+	pedidos_idpedido INT NOT NULL,
+	productos_idproducto INT NOT NULL,
+	cantidad INT,
+	importe FLOAT,
+	PRIMARY KEY (pedidos_idpedido, productos_idproducto)
+);
+
+
+ALTER TABLE negocios ADD tiene_envio BIT(1) NOT NULL  AFTER barrio;
+ALTER TABLE pedidos DROP cli_idcliente;
+ALTER TABLE pedidos DROP subtotal;
+ALTER TABLE pedidos CHANGE tiene_envio retira BIT(1) NULL DEFAULT NULL;
+
+CREATE TABLE `bayfoodnow`.`pedidos_clientes` ( `clientes_idcliente` INT NOT NULL , `pedidos_idpedido` INT NOT NULL ) ENGINE = MyISAM
+
+ALTER TABLE productos
+ADD CONSTRAINT FK_negocios_idnegocio
+FOREIGN KEY (negocios_idnegocio) REFERENCES negocios(idnegocio)
+
+ALTER TABLE pedidos_clientes
+ADD CONSTRAINT PK_pedidos_clientes PRIMARY KEY (clientes_idcliente,pedidos_idpedido)
