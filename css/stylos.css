@@ -3,10 +3,10 @@
     background-color: white;
 }
 
-#subtitulo{    
+.subtitulo{    
 	text-align: center;
-    background-color: darkorange;
-    color:white;
+  background-color: darkorange;
+  color:white;
 }
 
 .piepagina{
@@ -51,6 +51,11 @@ a:hover{
 div.row {
     background: lightgrey;
 }
+
+#datos{
+    align-content:space-around;
+    text-align: center;
+  }
 /*
 Posibles colores para la parte de pago
 element.style {

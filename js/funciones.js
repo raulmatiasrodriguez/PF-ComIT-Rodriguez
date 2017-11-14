@@ -64,7 +64,21 @@ $(function () {
     });
 });
 
+$(function (){
+    $("#mverde").click(function(){
+        $(".jumbotron").css("color", "chartreuse");
+        $(".subtitulo").css("background-color", "darkgreen");
+        $(".piepagina").css("background", "darkgreen");
+    });
+});
 
+/*
+$(function (){
+    $("#datos").click(function(){
+         n
+    });
+});
+*/
 
 //Funcion que se abre automaticamente cdo inicia la pag.
 //$(function(){

@@ -20,20 +20,25 @@
 		<header>
 			<h1>Alta de Productos</h1>
 		</header>
-		<h4 id="subtitulo">Bienvenido a gestion de Productos</h4><br>  
+		<h4 class="subtitulo">Bienvenido a gestion de Productos</h4><br>  
 
 		<div>
 			<section>
 				<p>Aqui podras realizar todo lo referente a tus productos.
 			   	Podes generar nuevos o inactivar existentes.
-			   	Luego de un proceso de verificacion te confirmaremos por email.
 			   	Adelante!
 				</p>			
 			</section>
 		</div>	
 
 		<!--Aca deberia ir un formulario con los datos a ingresar -->
-		
+		<div>
+			<form action="NuevoProd.PHP" method="post">
+				Descripcion: <input type="text" name="descrip"><br>
+				Precio: <input type="text" name="precio"> <br>
+			<input type="submit">
+			<button type="button" name="FIN">fin</button>
+		</div>
 
 		
 		<footer class="piepagina">
