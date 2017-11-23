@@ -63,3 +63,19 @@ FOREIGN KEY (negocios_idnegocio) REFERENCES negocios(idnegocio)
 
 ALTER TABLE pedidos_clientes
 ADD CONSTRAINT PK_pedidos_clientes PRIMARY KEY (clientes_idcliente,pedidos_idpedido)
+
+ALTER TABLE pedidos_clientes
+ADD CONSTRAINT FK_clientes_idcliente 
+FOREIGN KEY (clientes_idcliente) REFERENCES clientes(idcliente);
+
+ALTER TABLE pedidos_clientes
+ADD CONSTRAINT FK_pedidos_idpedido
+FOREIGN KEY (pedidos_idpedido) REFERENCES pedidos (idpedido);
+
+ALTER TABLE ped_prod
+ADD CONSTRAINT FK_pedidos_idpedidos 
+FOREIGN KEY (pedidos_idpedidos) REFERENCES pedidos(idpedido);
+
+ALTER TABLE ped_prod
+ADD CONSTRAINT FK_productos_idproducto 
+FOREIGN KEY (productos_idproducto) REFERENCES productos(idproducto);
